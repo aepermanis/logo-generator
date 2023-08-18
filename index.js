@@ -1,5 +1,6 @@
 var inquirer = require('inquirer');
 const fs = require('fs');
+const generateShapes = require('./lib/shapes')
 
 const questions = 
 [
@@ -29,7 +30,7 @@ const questions =
 ];
 
 function writeToFile(fileName, data) {
-    const svg = generateShapes(data)
+    const svg = generateShapes(data);
     fs.writeFileSync(fileName,svg);
     
     
@@ -37,7 +38,7 @@ function writeToFile(fileName, data) {
 
 function init() {
     inquirer.prompt(questions).then((answers) =>{
-        writeToFile(answers.text, answers)
+        writeToFile(`${answers.text}.svg`, answers)
     })
 };
 
