@@ -21,6 +21,9 @@
         THEN I am shown a 300x200 pixel image that matches the criteria I entered
 
 ## Usage
+    https://watch.screencastify.com/v/tlkGJHMGu0SadXULoaZ5
+    
+
     Run node index.js and answer the prompts from inquirer. Te prompts will lead to the creation of an svg logo.
 
 ## Tests
