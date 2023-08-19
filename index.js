@@ -1,6 +1,6 @@
 var inquirer = require('inquirer');
 const fs = require('fs');
-const generateShapes = require('./lib/shapes')
+const {Shape, triangle, square, circle}= require('./lib/shapes')
 
 const questions = 
 [
@@ -30,10 +30,21 @@ const questions =
 ];
 
 function writeToFile(fileName, data) {
-    const svg = generateShapes(data);
-    fs.writeFileSync(fileName,svg);
-    
-    
+    if (data.shape === 'triangle'){
+        let tri = new triangle(data.shapeColor, data.textColor, data.text);
+        let triSvg = tri.svgGenerator()
+        fs.writeFileSync(fileName, triSvg);
+    } else if (data.shape === 'circle'){
+        let cir = new circle(data.shapeColor, data.textColor, data.text);
+        let cirSvg = cir.svgGenerator()
+        fs.writeFileSync(fileName, cirSvg);
+    }else{
+        let squ = new square(data.shapeColor, data.textColor, data.text);
+        let squSvg = squ.svgGenerator()
+        console.log(squSvg);
+        fs.writeFileSync(fileName, squSvg);
+
+    };   
 }
 
 function init() {
